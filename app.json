@@ -3,6 +3,7 @@
     "name": "MyToDoList",
     "slug": "MyToDoList",
     "version": "1.0.0",
+    "scheme": "mytodolist",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,7 +22,7 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+    "bundler": "metro"
+  }
   }
 }
