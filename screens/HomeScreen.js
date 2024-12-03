@@ -9,7 +9,6 @@ function HomeScreen({ navigation }) {
 
   const addTask = (newTask) => {
     const trimmedTask = newTask?.trim();
-    console.log("New Task:", trimmedTask);
 
     if (!trimmedTask) {
       Alert.alert("Empty Task", "Please enter a task before adding.", [
@@ -21,7 +20,6 @@ function HomeScreen({ navigation }) {
     const isDuplicate = tasks.some(
       (existingTask) => existingTask.toLowerCase() === trimmedTask.toLowerCase()
     );
-    console.log("Is Duplicate:", isDuplicate);
 
     if (isDuplicate) {
       Alert.alert("Duplicate Task", "This task already exists!", [
