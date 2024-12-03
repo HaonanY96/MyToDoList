@@ -1,45 +1,17 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Alert } from "react-native";
-import React, { useState } from "react";
-import ToDoList from "../components/ToDoList";
-import ToDoForm from "../components/ToDoForm";
+import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
+import HomeScreen from "../screens/HomeScreen";
+import AboutScreen from "../screens/AboutScreen";
+
+const Stack = createStackNavigator();
 
 const Index = () => {
-  const [tasks, setTasks] = useState(["Do laundry", "Go to gym", "Walk dog"]);
-
-  const addTask = (newTask) => {
-    const trimmedTask = newTask.trim();
-    if (!trimmedTask) return;
-
-    const isDuplicate = tasks.some(
-      (existingTask) => existingTask.toLowerCase() === trimmedTask.toLowerCase()
-    );
-
-    if (isDuplicate) {
-      Alert.alert("Duplicate Task", "This task already exists!", [
-        { text: "OK" },
-      ]);
-    } else {
-      setTasks([...tasks, trimmedTask]);
-    }
-  };
-
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <ToDoForm addTask={addTask} />
-      <ToDoList tasks={tasks} />
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="About" component={AboutScreen} />
+    </Stack.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    paddingTop: 40,
-    paddingHorizontal: 15,
-  },
-});
 
 export default Index;
